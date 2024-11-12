@@ -28,15 +28,8 @@ def main():
         st.subheader("FAQs")
         st.markdown(st.session_state['faq'])
 
-    # Input for question and display answer
-    # question = st.text_input("Enter your question")
-    # if st.button("Get Answer"):
-    #     if question and 'transcript_paragraph' in st.session_state:
-    #         answer = question_text(st.session_state['transcript_paragraph'], question)
-    #         st.session_state['answer'] = answer
-
-        st.subheader("Ask a Question")
         # Input for question and display answer
+        st.subheader("Ask a Question")
         question = st.text_input("Enter your question")
         if st.button("Get Answer"):
             if question:

@@ -4,13 +4,17 @@ This Streamlit application allows users to input a YouTube video URL, summarize 
 
 It uses Google Generative AI and the YouTube Transcript API to provide summaries, FAQs, and contextual question-answering, with translation support for various languages.
 
+## Demo
+
+![App Demo](assets/demo.gif)
+
 ## Features
 
 1. **Video Transcript Extraction**: Extracts and translates the transcript of a YouTube video.
 2. **Detailed Summary**: Summarizes the video transcript in a point format.
 3. **FAQ Generation**: Generates a list of FAQs related to the video content.
 4. **Question Answering**: Answers specific user questions based on the video transcript.
-5. **Language Translation**: Supports transcript extraction in multiple languages and translates them to English if needed.
+5. **Language Translation**: Supports transcript extraction in multiple languages and translates them to English.
 
 ## Prerequisites
 
@@ -83,9 +87,14 @@ The application supports transcript extraction and translation from several lang
 
 ```plaintext
 .
-├── yt_summarizer_and_QA
+├── assets
+│   ├── demo.gif
+├── notebook
+│   └── yt_summarizer_QA.ipynb
+├── src
 │   ├── __init__.py
 │   └── yt_summarizer_qa.py     # Core functions for summarizing and answering questions
+├── __init__.py
 ├── app.py                      # Main Streamlit application
 ├── requirements.txt            # Python dependencies
 ├── .env                        # Environment file for API keys

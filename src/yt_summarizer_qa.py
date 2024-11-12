@@ -77,32 +77,9 @@ def fetch_and_translate_transcript(video_id):
 
     return transcript_paragraph
 
-
-"""
-# YouTube URL
-url = "https://youtu.be/qV3yjIyj7Dc?si=fT2pWkNSecaoZwmL"
-
-
-# Extract video ID from URL
-video_id = extract_video_id(url)
-
-# Fetch and print the transcript paragraph
-if video_id:
-    transcript_paragraph = fetch_and_translate_transcript(video_id)
-    # print(transcript_paragraph)
-else:
-    print("Invalid YouTube URL.")
-"""
-
-
 def summarize_text(transcript_paragraph):
     response = model.generate_content([f"The text is transcript of a YouTube Video. Summarize the following text in detail: {transcript_paragraph}. Present them in points if possible."])
     return response.text
-
-"""
-summary = summarize_text(transcript_paragraph)
-print(summary)
-"""
 
 def generate_faq(transcript_paragraph):
 
@@ -117,53 +94,8 @@ def generate_faq(transcript_paragraph):
     """])
     return response.text
 
-"""
-faq = generate_faq(transcript_paragraph)
-print(faq)
-
-question = input("Enter your question: ")
-"""
-
 def question_text(transcript_paragraph, question):
     response = model.generate_content([f"Please answer the following question based on the provided text: {transcript_paragraph}. Question: {question}"])
     response_text = response.text
     cleaned_text = response_text.replace('\n', '')
     return cleaned_text
-
-
-"""
-answer = question_text(transcript_paragraph, question)
-answer
-"""
-
-def initialize_chatbot_context(transcript_paragraph):
-    """
-    Initializes the chatbot context with the given transcript paragraph.
-    Returns a list to store conversation history.
-    """
-    # Starting context message for the chatbot, summarizing the source of the information
-    conversation_history = [
-        f"This is a QA chatbot. The information source is a transcript of a YouTube video. "
-        f"Feel free to ask questions based on this content:\n\n{transcript_paragraph}\n"
-    ]
-    return conversation_history
-
-def qa_chatbot(conversation_history, user_question):
-    """
-    Chatbot function that takes conversation history and user question as input.
-    Generates a response based on the context and returns the updated history.
-    """
-    # Add the user's question to the conversation history
-    conversation_history.append(f"User: {user_question}")
-
-    # Prepare the prompt to send to the model
-    prompt = "\n".join(conversation_history) + "\nBot:"
-
-    # Generate the response
-    response = model.generate_content([prompt])
-    bot_answer = response.text.strip()  # Get the bot's answer and strip any leading/trailing whitespace
-
-    # Add the bot's answer to the conversation history
-    conversation_history.append(f"Bot: {bot_answer}")
-
-    return bot_answer, conversation_history
