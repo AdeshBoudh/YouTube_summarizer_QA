@@ -1,4 +1,4 @@
 youtube-transcript-api
 google-generativeai
-Flask
+streamlit
 dotenv
